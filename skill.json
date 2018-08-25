@@ -1,0 +1,45 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "say alexa open progressive response starter",
+          "examplePhrases": [
+            "Alexa open progressive response starter",
+            "Alexa start progressive response starter",
+            "Alexa play progressive response starter"
+          ],
+          "keywords": [
+            "progressive",
+            "response",
+            "starter"
+          ],
+          "name": "Progressive Response Starter",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/3830/bbc9aa6feddc4fa0a2a4ff7ffc7e5910/APP_ICON?versionId=dJUAA7x_nao3aSxQE66YSKFAyCG35Wfk&AWSAccessKeyId=AKIAIEYXX6DHY7O4XWMA&Expires=1535275458&Signature=uXqdT%2B6lrd3odGKuiyolfIRqR3M%3D",
+          "description": "say alexa open progressive response starter",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/afda/f664c24b08114729a0a591a28e7cdd79/APP_ICON_LARGE?versionId=jL9eawOmHbXG.MXVCa83bEqE1XZu.gMm&AWSAccessKeyId=AKIAIEYXX6DHY7O4XWMA&Expires=1535275458&Signature=aOGL6rdxzPO8KSKBPxVR4x80HxU%3D"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "nothing specific",
+      "category": "NOVELTY",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "./lambda/us-east-1_progressiveResponseTemplate"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}
