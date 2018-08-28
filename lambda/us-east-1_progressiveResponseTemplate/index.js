@@ -8,28 +8,27 @@ const GetAstronautCountHandler = {
   },
   async handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
+    
+    var totalAstronauts;
     try {
+      //Make the external API call which will take time
+      axios.get('http://api.open-notify.org/astros.json')
+      .then(res => res.data)
+      .then(res => {
+          totalAstronauts = res.number;
+      })
+      
+      //Call the progressive response service
       await callDirectiveService(handlerInput);
     } catch (err) {
       // if it failed we can continue, just the user will wait longer for first response
       console.log("error : " + err);
     }
     try {
-      //Make the external API call which will take time
-      let totalAstronauts;
-      axios.get('http://api.open-notify.org/astros.json')
-      .then(res => res.data)
-      .then(res => {
-          totalAstronauts = res.number;
-      })
-
-
+      // Now create the normal response
       // let's purposely insert a 5 second delay for this demo. You should add enough delay to get the response back from API.
       // shouldn't go longer than 5 second else Lambda function may time out
       await sleep(5000);
-
-
-      console.log("after awaiting");
       let speechOutput = `There are currently ${totalAstronauts} astronauts in space. `;
         return responseBuilder
           .speak(speechOutput)
@@ -121,7 +120,7 @@ function callDirectiveService(handlerInput) {
     },
     directive:{ 
         type:"VoicePlayer.Speak",
-        speech:"Space is a bit far way. Wait till I get back the results from ISS."
+        speech:"Space is a bit far way. Wait till I get back the information from ISS."
     },
   };
   // send directive
