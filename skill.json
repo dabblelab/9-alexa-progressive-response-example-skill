@@ -36,6 +36,12 @@
     "manifestVersion": "1.0",
     "privacyAndCompliance": {
       "allowsPurchases": false,
+      "locales": {
+        "en-US": {
+          "termsOfUseUrl": "http://dabblelab.com/terms",
+          "privacyPolicyUrl": "http://dabblelab.com/privacy"
+        }
+      },
       "isExportCompliant": true,
       "containsAds": false,
       "isChildDirected": false,
