@@ -11,24 +11,27 @@ const GetAstronautCountHandler = {
     
     var totalAstronauts;
     try {
-      //Make the external API call which will take time
-      axios.get('http://api.open-notify.org/astros.json')
-      .then(res => res.data)
-      .then(res => {
-          totalAstronauts = res.number;
-      })
-      
       //Call the progressive response service
       await callDirectiveService(handlerInput);
+
     } catch (err) {
       // if it failed we can continue, just the user will wait longer for first response
       console.log("error : " + err);
     }
     try {
+      //Make the external API call which will take time
+      await axios.get('http://api.open-notify.org/astros.json')
+      .then(res => res.data)
+      .then(res => {
+          totalAstronauts = res.number;
+      })
+
       // Now create the normal response
       // let's purposely insert a 5 second delay for this demo. You should add enough delay to get the response back from API.
-      // shouldn't go longer than 5 second else Lambda function may time out
+
+      // shouldn't go longer than 5 seconds else lambda might time out
       await sleep(5000);
+
       let speechOutput = `There are currently ${totalAstronauts} astronauts in space. `;
         return responseBuilder
           .speak(speechOutput)
@@ -133,6 +136,20 @@ function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve(), milliseconds));
  }
  
+// const getRemoteData = function (url) {
+//   return new Promise((resolve, reject) => {
+//     const client = url.startsWith('https') ? require('https') : require('http');
+//     const request = client.get(url, (response) => {
+//       if (response.statusCode < 200 || response.statusCode > 299) {
+//         reject(new Error('Failed with status code: ' + response.statusCode));
+//       }
+//       const body = [];
+//       response.on('data', (chunk) => body.push(chunk));
+//       response.on('end', () => resolve(body.join('')));
+//     });
+//     request.on('error', (err) => reject(err))
+//   })
+// };
 
 
 // 4. Exports handler function and setup ===================================================
