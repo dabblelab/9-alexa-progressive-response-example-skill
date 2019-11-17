@@ -8,7 +8,7 @@ const GetAstronautCountHandler = {
   },
   async handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
-    
+
     var totalAstronauts;
     try {
       //Call the progressive response service
@@ -21,10 +21,10 @@ const GetAstronautCountHandler = {
     try {
       //Make the external API call which will take time
       await axios.get('http://api.open-notify.org/astros.json')
-      .then(res => res.data)
-      .then(res => {
+        .then(res => res.data)
+        .then(res => {
           totalAstronauts = res.number;
-      })
+        })
 
       // Now create the normal response
       // let's purposely insert a 5 second delay for this demo. You should add enough delay to get the response back from API.
@@ -33,10 +33,10 @@ const GetAstronautCountHandler = {
       await sleep(5000);
 
       let speechOutput = `There are currently ${totalAstronauts} astronauts in space. `;
-        return responseBuilder
-          .speak(speechOutput)
-          .getResponse();
-      
+      return responseBuilder
+        .speak(speechOutput)
+        .getResponse();
+
     } catch (err) {
       console.log(`Error processing events request: ${err}`);
       return responseBuilder
@@ -106,7 +106,6 @@ const ErrorHandler = {
   },
 };
 
-
 function callDirectiveService(handlerInput) {
   // Call Alexa Directive Service.
   const requestEnvelope = handlerInput.requestEnvelope;
@@ -121,36 +120,18 @@ function callDirectiveService(handlerInput) {
     header: {
       requestId,
     },
-    directive:{ 
-        type:"VoicePlayer.Speak",
-        speech:"Space is a bit far way. Wait till I get back the information from ISS."
+    directive: {
+      type: "VoicePlayer.Speak",
+      speech: "Space is a bit far way. I'll need a few seconds to get the information from ISS."
     },
   };
   // send directive
   return directiveServiceClient.enqueue(directive, endpoint, token);
 }
 
-
-
 function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve(), milliseconds));
- }
- 
-// const getRemoteData = function (url) {
-//   return new Promise((resolve, reject) => {
-//     const client = url.startsWith('https') ? require('https') : require('http');
-//     const request = client.get(url, (response) => {
-//       if (response.statusCode < 200 || response.statusCode > 299) {
-//         reject(new Error('Failed with status code: ' + response.statusCode));
-//       }
-//       const body = [];
-//       response.on('data', (chunk) => body.push(chunk));
-//       response.on('end', () => resolve(body.join('')));
-//     });
-//     request.on('error', (err) => reject(err))
-//   })
-// };
-
+}
 
 // 4. Exports handler function and setup ===================================================
 const skillBuilder = Alexa.SkillBuilders.custom();

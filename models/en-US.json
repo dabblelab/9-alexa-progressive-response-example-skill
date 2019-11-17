@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "progressive response starter",
+      "invocationName": "template nine",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
