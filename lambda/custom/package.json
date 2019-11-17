@@ -1,0 +1,15 @@
+{
+  "name": "progressive-response-starter",
+  "version": "1.0.0",
+  "description": "A template to showcase progressive responses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashish Jha",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk": "^2.0.7",
+    "axios": "^0.18.0"
+  }
+}
