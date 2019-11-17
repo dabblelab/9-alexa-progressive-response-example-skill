@@ -28,7 +28,7 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "sourceDir": "./lambda/us-east-1_progressiveResponseTemplate"
+          "sourceDir": "./lambda/custom"
         },
         "interfaces": []
       }
