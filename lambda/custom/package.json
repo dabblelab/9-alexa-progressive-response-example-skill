@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "ask-sdk": "^2.0.7",
-    "axios": "^0.21.1"
+    "axios": "^0.21.2"
   }
 }
